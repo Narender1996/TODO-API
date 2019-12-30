@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+       
+    </head>
+    <body>
+            <input type="text"  id="newtask">
+            <button id="addtask" onclick="add()">Add</button>
+            
+            <ul id="todolist"></ul>
+<script>
+
+let  newtask=document.getElementById('newtask')
+let  addtask=document.getElementById('addtask')
+let  todolist=document.getElementById('todolist')
+
+function add()
+{
+    let li=document.createElement('li')
+    li.innerText=newtask.value
+    let xbtn=document.createElement('button')
+    xbtn.innerText='delete'
+    xbtn.onclick=function(event)   
+     {
+event.target.parentElement.remove()
+    }
+    
+    let upbtn=document.createElement('button')
+    upbtn.innerText='upbutton'
+    upbtn.onclick=function(event)
+    {
+        //event.target=he up button
+        //event.target.parentElement=the <li> item
+            //event.target.parentElement.parentElement is the todolist
+       event.target.parentElement.parentElement.insertBefore(
+           event.target.parentElement,
+           event.target.parentElement.previousElementSibling
+       )
+    }
+    
+    let downbtn=document.createElement('button')
+    downbtn.innerText='downbutton'
+    downbtn.onclick=function(event)
+    {
+        //event.target=he up button
+        //event.target.parentElement=the <li> item
+            //event.target.parentElement.parentElement is the todolist
+       event.target.parentElement.parentElement.insertAfter(
+           event.target.parentElement,
+           event.target.parentElement.nextElementSibling
+       )
+    }
+    li.appendChild(downbtn)
+    li.appendChild(upbtn)
+    li.appendChild(xbtn)
+    todolist.appendChild(li) 
+    }
+
+</script>
+
+    </body>
+</html>
+
+<!--
+let update=document.createElement('button')
+update.innerText='change'
+update.onclick=function()
+{
+   let cng=document.getElementById('li')
+   cng.innerText=newtas
+}-->
